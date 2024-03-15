@@ -26,7 +26,7 @@ _VERSIONS = {
     'matplotlib': 'matplotlib>=3.2.0,<4',
     'ml_metadata': 'ml-metadata>=1.5.0,<2.0.0',
     'pre-commit': 'pre-commit',
-    'protobuf': 'protobuf>=3.19.0,<5',
+    'protobuf': 'protobuf>=3.19.0,<4',
     'pylint': 'pylint',
     'pytest': 'pytest',
     'tensorflow_data_validation': 'tensorflow-data-validation>=1.5.0,<2.0.0',
