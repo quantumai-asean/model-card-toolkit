@@ -264,30 +264,9 @@ message Considerations {
   repeated Risk ethical_considerations = 5;
 }
 
-// Fields used to generate the Model Card.
-// The next tag number is 5.
-message ModelCard {
-  // Descriptive metadata for the model.
-  optional ModelDetails model_details = 1;
-
-  // Technical metadata for the model.
-  optional ModelParameters model_parameters = 2;
-
-  // Quantitative analysis of model performance.
-  optional QuantitativeAnalysis quantitative_analysis = 3;
-
-  // Any considerations related to model construction, training, and application
-  optional Considerations considerations = 4;
-}
-
 
 // Customisation starts
-
-
-// 1. 23 Mar 24
-
 // RAIIA Project Summary
-
 message SelfAssessProjectSummaryBackground {
   optional string project_name = 1;
   optional string business_segment = 2;
@@ -333,4 +312,27 @@ message saRiskFactorField {
 message SelfAssessAIPrinciples {
   repeated saRiskFactorField fairness = 1;
 }
+
+// Fields used to generate the Model Card.
+// The next tag number is 5.
+message ModelCard {
+  // Descriptive metadata for the model.
+  optional ModelDetails model_details = 1;
+
+  // Technical metadata for the model.
+  optional ModelParameters model_parameters = 2;
+
+  // Quantitative analysis of model performance.
+  optional QuantitativeAnalysis quantitative_analysis = 3;
+
+  // Any considerations related to model construction, training, and application
+  optional Considerations considerations = 4;
+
+  optional SelfAssessProjectSummary saProjectSummary = 5;
+
+  optional SelfAssessAIPrinciples saRAIIARiskAssessment = 6;
+}
+
+
+
 
