@@ -287,43 +287,6 @@ message ModelCard {
 // 1. 23 Mar 24
 
 // RAIIA Project Summary
-"""
-
-class pydRAIIA_ProjectSummary_Background(BaseModel):
-  project_name: str = Field(..., format="multi-line", description="Name of the AI project.")
-  business_segment: str = Field(..., format="multi-line", description="Which segment of business is the AI project for.")
-  project_start_date: datetime.date = Field(
-        datetime.date.today(),
-        description="When did the project start?",
-    )  
-  ai_system_launch_date: datetime.date = Field(
-        datetime.date.today(),
-        description="When was/will the AI system launched?",
-    )
-  region: str = Field(..., description="region where the AI system is deployed.")
-  responsible_person: str = Field(..., description="Name of the person responsible for the AI system.")
-
-class pydRAIIA_ProjectSummary_PotentialRisksSummary(BaseModel):
-  legal_risk: str = Field(..., format="multi-line", description="Legal aspect of Risks.")
-  reputational_risk: str = Field(..., format="multi-line", description="Reputational aspect of Risks.")
-  ethical_risk: str = Field(..., format="multi-line", description="Ethical aspect of Risks.")
-  environmental_risk: str = Field(..., format="multi-line", description="Environmental aspect of Risks.")
-  
-
-class pydRAIIA_ProjectSummary_Summary(BaseModel):
-  high_level_technical_and_functional_overview: str = Field(..., format="multi-line", description="Overview of the AI project.")
-  business_driver_and_context: str = Field(..., format="multi-line", description="Overview of the AI project.")
-  external_data_sources_and_data_sets: str = Field(..., format="multi-line", description="Descriptions of external datasets used to train the AI model.")
-  internal_data_sources_and_data_sets: str = Field(..., format="multi-line", description="Descriptions of internal datasets used to train the AI model.")
-  summary_of_potential_risks: pydRAIIA_ProjectSummary_PotentialRisksSummary 
-  external_related_documents: str = Field(..., format="multi-line", description="References to applicable Documents.")
-  governance_model: str = Field(..., format="multi-line", description="The Governance Framework of the AI project.")
-  project_team: str = Field(..., format="multi-line", description="The team members of the AI project.") 
-
-class pydRAIIA_ProjectSummary(BaseModel):
-  background: pydRAIIA_ProjectSummary_Background
-  summary: pydRAIIA_ProjectSummary_Summary
-"""
 
 message SelfAssessProjectSummaryBackground {
   optional string project_name = 1;
