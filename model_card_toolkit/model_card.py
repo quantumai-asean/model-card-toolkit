@@ -469,6 +469,107 @@ class Considerations(BaseModelCardField):
   _proto_type: dataclasses.InitVar[type(model_card_pb2.Considerations)
                                    ] = model_card_pb2.Considerations
 
+#Add custom MCT Classess
+@dataclasses.dataclass
+class SelfAssessProjectSummaryBackground(BaseModelCardField):
+  """ProjectSummaryBackground.
+
+  Attributes:
+    
+  """
+  project_name: Optional[str] = None
+  business_segment: Optional[str] = None
+  project_start_date: Optional[str] = None
+  ai_system_launch_date: Optional[str] = None
+  region: Optional[str] = None
+  responsible_person: Optional[str] = None
+
+  _proto_type: dataclasses.InitVar[type(model_card_pb2.SelfAssessProjectSummaryBackground)
+                                   ] = model_card_pb2.SelfAssessProjectSummaryBackground
+
+
+
+
+@dataclasses.dataclass
+class SelfAssessProjectSummarySummary(BaseModelCardField):
+  """ProjectSummarySummary.
+
+  Attributes:
+    
+  """
+  high_level_technical_and_functional_overview: Optional[str] = None
+  business_driver_and_context: Optional[str] = None
+  external_data_sources_and_data_sets: Optional[str] = None
+  internal_data_sources_and_data_sets: Optional[str] = None
+  legal_risk: Optional[str] = None
+  reputational_risk: Optional[str] = None
+  ethical_risk: Optional[str] = None
+  environmental_risk: Optional[str] = None
+  external_related_documents: Optional[str] = None
+  governance_model: Optional[str] = None
+  project_team: Optional[str] = None
+
+  _proto_type: dataclasses.InitVar[type(model_card_pb2.SelfAssessProjectSummarySummary)
+                                   ] = model_card_pb2.SelfAssessProjectSummarySummary
+
+
+@dataclasses.dataclass
+class SelfAssessProjectSummary(BaseModelCardField):
+  """ProjectSummary.
+
+  Attributes:
+    
+  """
+
+  background: SelfAssessProjectSummaryBackground = dataclasses.field(
+      default_factory=SelfAssessProjectSummaryBackground
+  )
+  summary: SelfAssessProjectSummarySummary = dataclasses.field(
+      default_factory=SelfAssessProjectSummarySummary
+  )
+  _proto_type: dataclasses.InitVar[type(model_card_pb2.SelfAssessProjectSummary)
+                                   ] = model_card_pb2.SelfAssessProjectSummary
+
+
+
+@dataclasses.dataclass
+class saRiskFactorField(BaseModelCardField):
+  """A type of AI Prinicple Self-assessment Risk Factor.
+
+  Attributes:
+    
+  """
+  risk_factor_question: Optional[str] = None
+  whether_or_how_the_solution_addresses_the_factor: Optional[str] = None
+  user_risk_rating: Optional[str] = None
+  ai_risk_rating: Optional[str] = None
+  ai_risk_reason: Optional[str] = None
+  user_mitigation_method: Optional[str] = None
+  user_revised_risk_rating: Optional[str] = None
+  ai_revised_risk_rating: Optional[str] = None
+  ai_revised_risk_reason: Optional[str] = None
+
+  _proto_type: dataclasses.InitVar[type(model_card_pb2.saRiskFactorField)
+                                   ] = model_card_pb2.saRiskFactorField
+
+
+@dataclasses.dataclass
+class SelfAssessAIPrinciples(BaseModelCardField):
+  """AI Prinicple Self-assessment 
+
+  Attributes:
+    
+  """
+  #each question is an element
+  fairness: List[saRiskFactorField] = dataclasses.field(default_factory=list)
+  reliability: List[saRiskFactorField] = dataclasses.field(default_factory=list)
+  privacy: List[saRiskFactorField] = dataclasses.field(default_factory=list)
+  accountability: List[saRiskFactorField] = dataclasses.field(default_factory=list)
+  transparency: List[saRiskFactorField] = dataclasses.field(default_factory=list)
+  human_happiness: List[saRiskFactorField] = dataclasses.field(default_factory=list)
+
+  _proto_type: dataclasses.InitVar[type(model_card_pb2.SelfAssessAIPrinciples)
+                                   ] = model_card_pb2.SelfAssessAIPrinciples
 
 @dataclasses.dataclass
 class ModelCard(BaseModelCardField):
@@ -490,6 +591,14 @@ class ModelCard(BaseModelCardField):
   )
   considerations: Considerations = dataclasses.field(
       default_factory=Considerations
+  )
+
+  saProjectSummary: SelfAssessProjectSummary = dataclasses.field(
+      default_factory=SelfAssessProjectSummary
+  )
+
+  saRAIIARiskAssessment: SelfAssessAIPrinciples = dataclasses.field(
+      default_factory=SelfAssessAIPrinciples
   )
 
   _proto_type: dataclasses.InitVar[type(model_card_pb2.ModelCard)
@@ -628,3 +737,7 @@ def load_model_card(path: Union[Path, str]) -> Optional[ModelCard]:
   elif suffix == '.json':
     model_card_json = json_lib.loads(io_utils.read_file(path))
     return ModelCard.from_json(model_card_json)
+
+
+
+
