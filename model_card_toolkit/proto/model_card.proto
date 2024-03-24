@@ -312,8 +312,8 @@ message SelfAssessProjectSummarySummary {
 }
 
 message SelfAssessProjectSummary {
-  SelfAssessProjectSummaryBackground background = 1;
-  SelfAssessProjectSummarySummary summary = 2;
+  optional SelfAssessProjectSummaryBackground background = 1;
+  optional SelfAssessProjectSummarySummary summary = 2;
 }
 
 // Risk Factor Self-assessment
