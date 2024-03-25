@@ -530,6 +530,17 @@ class SelfAssessProjectSummary(BaseModelCardField):
   _proto_type: dataclasses.InitVar[type(model_card_pb2.SelfAssessProjectSummary)
                                    ] = model_card_pb2.SelfAssessProjectSummary
 
+@dataclasses.dataclass
+class saKeyFactorField(BaseModelCardField):
+  risk_factor_question: Optional[str] = None
+  risk_factor_answer: Optional[str] = None
+  user_risk_rating: Optional[str] = None
+  ai_risk_rating: Optional[str] = None
+  ai_risk_reason: Optional[str] = None
+
+@dataclasses.dataclass
+class SelfAssessKeyFactor(BaseModelCardField):
+  keyfactor: List[saKeyFactorField] = dataclasses.field(default_factory=list)
 
 
 @dataclasses.dataclass

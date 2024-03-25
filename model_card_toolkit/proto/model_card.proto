@@ -295,6 +295,21 @@ message SelfAssessProjectSummary {
   optional SelfAssessProjectSummarySummary summary = 2;
 }
 
+//Key Factor
+message saKeyFactorField {
+  optional string risk_factor_question = 1;
+  optional string risk_factor_answer = 2;
+  optional string user_risk_rating = 3;
+  optional string ai_risk_rating = 4;
+  optional string ai_risk_reason = 5;
+}
+
+message SelfAssessKeyFactor {
+  repeated saKeyFactorField keyfactor = 1;
+
+}
+
+
 // Risk Factor Self-assessment
 // Based on class pydRAIIA_AIEthicsPrinciplesTemplate(BaseModel) in schema.py
 message saRiskFactorField {
@@ -311,6 +326,11 @@ message saRiskFactorField {
 
 message SelfAssessAIPrinciples {
   repeated saRiskFactorField fairness = 1;
+  repeated saRiskFactorField reliability = 2;
+  repeated saRiskFactorField privacy = 3;
+  repeated saRiskFactorField accountability = 4;
+  repeated saRiskFactorField transparency = 5;
+  repeated saRiskFactorField human_happiness = 6;
 }
 
 // Fields used to generate the Model Card.
@@ -331,6 +351,8 @@ message ModelCard {
   optional SelfAssessProjectSummary saProjectSummary = 5;
 
   optional SelfAssessAIPrinciples saRAIIARiskAssessment = 6;
+
+  optional SelfAssessKeyFactor saKeyFactors = 7; 
 }
 
 
