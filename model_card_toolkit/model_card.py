@@ -537,10 +537,14 @@ class saKeyFactorField(BaseModelCardField):
   user_risk_rating: Optional[str] = None
   ai_risk_rating: Optional[str] = None
   ai_risk_reason: Optional[str] = None
+  _proto_type: dataclasses.InitVar[type(model_card_pb2.saKeyFactorField)
+                                   ] = model_card_pb2.saKeyFactorField
 
 @dataclasses.dataclass
 class SelfAssessKeyFactor(BaseModelCardField):
   keyfactor: List[saKeyFactorField] = dataclasses.field(default_factory=list)
+  _proto_type: dataclasses.InitVar[type(model_card_pb2.SelfAssessKeyFactor)
+                                   ] = model_card_pb2.SelfAssessKeyFactor
 
 
 @dataclasses.dataclass
@@ -607,6 +611,10 @@ class ModelCard(BaseModelCardField):
   saProjectSummary: SelfAssessProjectSummary = dataclasses.field(
       default_factory=SelfAssessProjectSummary
   )
+
+  saKeyFactors:SelfAssessKeyFactor = dataclasses.field(
+      default_factory=SelfAssessKeyFactor
+  ) 
 
   saRAIIARiskAssessment: SelfAssessAIPrinciples = dataclasses.field(
       default_factory=SelfAssessAIPrinciples
