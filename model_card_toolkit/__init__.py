@@ -48,4 +48,6 @@ __all__ = [
     'User',
     'Version',
     'load_model_card',
+    'saKeyFactorField',
+    'saRiskFactorField',
 ]
