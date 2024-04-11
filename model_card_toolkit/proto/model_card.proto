@@ -306,7 +306,8 @@ message saKeyFactorField {
 
 message SelfAssessKeyFactor {
   repeated saKeyFactorField keyfactor = 1;
-
+  // A collection of visualizations of model performance.
+  optional GraphicsCollection graphics = 2;
 }
 
 
@@ -331,6 +332,8 @@ message SelfAssessAIPrinciples {
   repeated saRiskFactorField accountability = 4;
   repeated saRiskFactorField transparency = 5;
   repeated saRiskFactorField human_happiness = 6;
+  // A collection of visualizations of model performance.
+  optional GraphicsCollection graphics = 7;
 }
 
 // Fields used to generate the Model Card.

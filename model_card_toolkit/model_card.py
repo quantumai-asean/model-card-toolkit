@@ -543,6 +543,9 @@ class saKeyFactorField(BaseModelCardField):
 @dataclasses.dataclass
 class SelfAssessKeyFactor(BaseModelCardField):
   keyfactor: List[saKeyFactorField] = dataclasses.field(default_factory=list)
+  graphics: GraphicsCollection = dataclasses.field(
+      default_factory=GraphicsCollection
+  )
   _proto_type: dataclasses.InitVar[type(model_card_pb2.SelfAssessKeyFactor)
                                    ] = model_card_pb2.SelfAssessKeyFactor
 
@@ -582,6 +585,9 @@ class SelfAssessAIPrinciples(BaseModelCardField):
   accountability: List[saRiskFactorField] = dataclasses.field(default_factory=list)
   transparency: List[saRiskFactorField] = dataclasses.field(default_factory=list)
   human_happiness: List[saRiskFactorField] = dataclasses.field(default_factory=list)
+  graphics: GraphicsCollection = dataclasses.field(
+      default_factory=GraphicsCollection
+  )
 
   _proto_type: dataclasses.InitVar[type(model_card_pb2.SelfAssessAIPrinciples)
                                    ] = model_card_pb2.SelfAssessAIPrinciples
